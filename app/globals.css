@@ -19,7 +19,6 @@
 }
 
 @layer components {
-  /* Custom gradient backgrounds */
   .bg-pi-gradient {
     background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
   }
@@ -28,25 +27,14 @@
     background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
   }
   
-  /* Glassmorphism effect */
   .glass {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
   }
-  
-  /* Card shadow effects */
-  .card-shadow {
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  }
-  
-  .card-shadow-lg {
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  }
 }
 
 @layer utilities {
-  /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 4px;
   }
@@ -64,54 +52,16 @@
     background: #a8a8a8;
   }
 
-  /* Smooth animations */
   * {
-    transition-property: transform, opacity, background-color, border-color, color, fill, stroke, box-shadow;
+    transition-property: transform, opacity, background-color, border-color, color, fill, stroke;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
   }
 
-  /* Prevent text selection on interactive elements */
   .no-select {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
   }
-  
-  /* Custom button hover effects */
-  .btn-hover {
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .btn-hover:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
-  }
-  
-  /* Custom focus styles */
-  .focus-visible:focus-visible {
-    outline: 2px solid #7c3aed;
-    outline-offset: 2px;
-  }
-  
-  /* Image loading animation */
-  .image-loading {
-    background: linear-gradient(90deg, #f0f0f0 25%, transparent 37%, #f0f0f0 63%);
-    background-size: 400% 100%;
-    animation: shimmer 1.5s ease-in-out infinite;
-  }
-  
-  @keyframes shimmer {
-    0% {
-      background-position: 100% 0;
-    }
-    100% {
-      background-position: -100% 0;
-    }
-  }
-  
-  /* Pulse animation for notifications */
-  .pulse-notification {
-    animation: pulse-notification 2s infinite;
-  }
+}
