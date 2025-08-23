@@ -4,10 +4,10 @@ import React, { useState, useEffect } from 'react';
 import { Heart, X, Zap, Eye, MessageCircle, Settings, User, Crown, Shield, Sparkles, MapPin, Star } from 'lucide-react';
 
 const PiMatchApp = () => {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState<any>(null);
   const [currentScreen, setCurrentScreen] = useState('login');
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
-  const [matches, setMatches] = useState([]);
+  const [matches, setMatches] = useState<any[]>([]);
   const [piBalance, setPiBalance] = useState(142.5);
   
   // Mock users data
