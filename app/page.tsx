@@ -65,7 +65,7 @@ const PiMatchApp = () => {
   };
 
   // Swipe actions
-  const handleSwipe = (direction) => {
+  const handleSwipe = (direction: string) => {
     if (direction === 'right') {
       // Simulate match
       if (Math.random() > 0.7) {
@@ -80,7 +80,7 @@ const PiMatchApp = () => {
   };
 
   // Pi payment simulation
-  const makePiPayment = (amount, feature) => {
+  const makePiPayment = (amount: number, feature: string) => {
     // In real app: window.Pi.createPayment(...)
     if (piBalance >= amount) {
       setPiBalance(prev => prev - amount);
@@ -163,7 +163,7 @@ const PiMatchApp = () => {
   };
 
   // Profile Card Component
-  const ProfileCard = ({ user, onSwipe }) => (
+  const ProfileCard = ({ user, onSwipe }: { user: any; onSwipe: (direction: string) => void }) => (
     <div className="relative w-full h-[600px] rounded-3xl overflow-hidden shadow-2xl bg-white">
       <img 
         src={user.images[0]} 
