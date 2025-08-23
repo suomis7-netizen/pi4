@@ -205,7 +205,7 @@ const PiMatchApp = () => {
         
         {/* Interests */}
         <div className="flex flex-wrap gap-2">
-          {user.interests.slice(0, 3).map((interest, index) => (
+          {user.interests.slice(0, 3).map((interest: string, index: number) => (
             <span 
               key={index}
               className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs text-white border border-white/30"
@@ -427,7 +427,7 @@ const PiMatchApp = () => {
             </div>
           ) : (
             <div className="space-y-3">
-              {matches.map((match) => (
+              {matches.map((match: any) => (
                 <div key={match.id} className="bg-white rounded-xl p-4 border border-purple-100 shadow-sm">
                   <div className="flex items-center space-x-3">
                     <img 
