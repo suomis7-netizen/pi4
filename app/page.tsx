@@ -85,6 +85,71 @@ const PiMatchApp = () => {
       piVerified: true,
       online: false,
       lastSeen: "1 hour ago"
+    },
+    {
+      id: 6,
+      name: "Isabella",
+      age: 24,
+      bio: "Fashion designer & Pi enthusiast 👗 Creating sustainable fashion while mining Pi. Life is about style and substance!",
+      images: ["https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=600&fit=crop&crop=face"],
+      distance: 2.8,
+      interests: ["Fashion", "Sustainability", "Pi Network", "Photography", "Travel"],
+      verified: true,
+      piVerified: true,
+      online: true,
+      lastSeen: "Active now"
+    },
+    {
+      id: 7,
+      name: "Maya",
+      age: 27,
+      bio: "Nutritionist by day, Pi pioneer by night 🥗 Believe in healthy living and crypto revolution. Let's grow together!",
+      images: ["https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=600&fit=crop&crop=face"],
+      distance: 3.5,
+      interests: ["Health", "Nutrition", "Pi Network", "Cooking", "Fitness"],
+      verified: true,
+      piVerified: true,
+      online: true,
+      lastSeen: "Active now"
+    },
+    {
+      id: 8,
+      name: "Zoe",
+      age: 22,
+      bio: "Psychology student exploring the mind & Pi Network 🧠 Love deep conversations, books, and building digital future",
+      images: ["https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?w=400&h=600&fit=crop&crop=face"],
+      distance: 4.7,
+      interests: ["Psychology", "Books", "Pi Network", "Philosophy", "Music"],
+      verified: true,
+      piVerified: true,
+      online: false,
+      lastSeen: "30 min ago"
+    },
+    {
+      id: 9,
+      name: "Chloe",
+      age: 30,
+      bio: "Veterinarian with a heart for animals & Pi 🐱 Saving pets and investing in Pi. Looking for someone who loves both!",
+      images: ["https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=600&fit=crop&crop=face"],
+      distance: 6.1,
+      interests: ["Animals", "Veterinary", "Pi Network", "Nature", "Hiking"],
+      verified: true,
+      piVerified: true,
+      online: true,
+      lastSeen: "Active now"
+    },
+    {
+      id: 10,
+      name: "Violet",
+      age: 26,
+      bio: "Musician & crypto dreamer 🎵 Playing piano since 5, mining Pi since 2021. Music + Math = Perfect harmony!",
+      images: ["https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=600&fit=crop&crop=face"],
+      distance: 1.9,
+      interests: ["Music", "Piano", "Pi Network", "Crypto", "Art"],
+      verified: true,
+      piVerified: true,
+      online: true,
+      lastSeen: "Active now"
     }
   ];
 
