@@ -8,36 +8,10 @@ const PiMatchApp = () => {
   const [currentScreen, setCurrentScreen] = useState('login');
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
   const [matches, setMatches] = useState<any[]>([]);
+  const [piBalance, setPiBalance] = useState(142.5);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
-
-  // Touch/Mouse handlers for swiping
-  const handleStart = (clientX: number, clientY: number) => {
-    setDragStart({ x: clientX, y: clientY });
-    setDragOffset({ x: 0, y: 0 });
-    setIsDragging(true);
-  };
-
-  const handleMove = (clientX: number, clientY: number) => {
-    if (!isDragging) return;
-    const deltaX = clientX - dragStart.x;
-    const deltaY = clientY - dragStart.y;
-    setDragOffset({ x: deltaX, y: deltaY });
-  };
-
-  const handleEnd = () => {
-    if (!isDragging) return;
-    setIsDragging(false);
-    
-    const threshold = 100;
-    if (Math.abs(dragOffset.x) > threshold) {
-      const direction = dragOffset.x > 0 ? 'right' : 'left';
-      handleSwipe(direction);
-    }
-    
-    setDragOffset({ x: 0, y: 0 });
-  };
   
   // Mock users data
   const mockUsers = [
@@ -78,6 +52,33 @@ const PiMatchApp = () => {
       online: true
     }
   ];
+
+  // Touch/Mouse handlers for swiping
+  const handleStart = (clientX: number, clientY: number) => {
+    setDragStart({ x: clientX, y: clientY });
+    setDragOffset({ x: 0, y: 0 });
+    setIsDragging(true);
+  };
+
+  const handleMove = (clientX: number, clientY: number) => {
+    if (!isDragging) return;
+    const deltaX = clientX - dragStart.x;
+    const deltaY = clientY - dragStart.y;
+    setDragOffset({ x: deltaX, y: deltaY });
+  };
+
+  const handleEnd = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+    
+    const threshold = 100;
+    if (Math.abs(dragOffset.x) > threshold) {
+      const direction = dragOffset.x > 0 ? 'right' : 'left';
+      handleSwipe(direction);
+    }
+    
+    setDragOffset({ x: 0, y: 0 });
+  };
 
   // Mock Pi authentication
   const connectPi = () => {
@@ -193,25 +194,41 @@ const PiMatchApp = () => {
 
   // Profile Card Component
   const ProfileCard = ({ user, onSwipe }: { user: any; onSwipe: (direction: string) => void }) => {
-    const cardRotation = dragOffset.x * 0.1;
-    const cardOpacity = 1 - Math.abs(dragOffset.x) * 0.002;
+    const cardRotation = isDragging ? dragOffset.x * 0.1 : 0;
+    const cardOpacity = isDragging ? 1 - Math.abs(dragOffset.x) * 0.002 : 1;
     
     return (
-    <div 
-      className="relative w-full h-[600px] rounded-3xl overflow-hidden shadow-2xl bg-white cursor-grab active:cursor-grabbing"
-      style={{
-        transform: `translateX(${dragOffset.x}px) translateY(${dragOffset.y}px) rotate(${cardRotation}deg)`,
-        opacity: cardOpacity,
-        transition: isDragging ? 'none' : 'all 0.3s ease-out'
-      }}
-      onMouseDown={(e) => handleStart(e.clientX, e.clientY)}
-      onMouseMove={(e) => handleMove(e.clientX, e.clientY)}
-      onMouseUp={handleEnd}
-      onMouseLeave={handleEnd}
-      onTouchStart={(e) => handleStart(e.touches[0].clientX, e.touches[0].clientY)}
-      onTouchMove={(e) => handleMove(e.touches[0].clientX, e.touches[0].clientY)}
-      onTouchEnd={handleEnd}
-    >
+      <div 
+        className="relative w-full h-[600px] rounded-3xl overflow-hidden shadow-2xl bg-white cursor-grab active:cursor-grabbing select-none"
+        style={{
+          transform: `translateX(${dragOffset.x}px) translateY(${dragOffset.y}px) rotate(${cardRotation}deg)`,
+          opacity: cardOpacity,
+          transition: isDragging ? 'none' : 'all 0.3s ease-out'
+        }}
+        onMouseDown={(e) => {
+          e.preventDefault();
+          handleStart(e.clientX, e.clientY);
+        }}
+        onMouseMove={(e) => {
+          if (isDragging) {
+            e.preventDefault();
+            handleMove(e.clientX, e.clientY);
+          }
+        }}
+        onMouseUp={handleEnd}
+        onMouseLeave={handleEnd}
+        onTouchStart={(e) => {
+          e.preventDefault();
+          handleStart(e.touches[0].clientX, e.touches[0].clientY);
+        }}
+        onTouchMove={(e) => {
+          if (isDragging) {
+            e.preventDefault();
+            handleMove(e.touches[0].clientX, e.touches[0].clientY);
+          }
+        }}
+        onTouchEnd={handleEnd}
+      >
       <img 
         src={user.images[0]} 
         alt={user.name}
