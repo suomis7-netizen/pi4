@@ -153,6 +153,89 @@ const PiMatchApp = () => {
     }
   ];
 
+  // Debug log
+  console.log("Total users:", mockUsers.length);
+  console.log("Current user:", mockUsers[currentCardIndex]?.name);
+    {
+      id: 5,
+      name: "Aria",
+      age: 29,
+      bio: "Software developer passionate about blockchain 👩‍💻 Pi mining since day one. Let's code the future together",
+      images: ["https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop&crop=face"],
+      distance: 5.2,
+      interests: ["Coding", "Blockchain", "Pi Network", "Gaming", "AI"],
+      verified: true,
+      piVerified: true,
+      online: false,
+      lastSeen: "1 hour ago"
+    },
+    {
+      id: 6,
+      name: "Isabella",
+      age: 24,
+      bio: "Fashion designer & Pi enthusiast 👗 Creating sustainable fashion while mining Pi. Life is about style and substance!",
+      images: ["https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&h=600&fit=crop&crop=face"],
+      distance: 2.8,
+      interests: ["Fashion", "Sustainability", "Pi Network", "Photography", "Travel"],
+      verified: true,
+      piVerified: true,
+      online: true,
+      lastSeen: "Active now"
+    },
+    {
+      id: 7,
+      name: "Maya",
+      age: 27,
+      bio: "Nutritionist by day, Pi pioneer by night 🥗 Believe in healthy living and crypto revolution. Let's grow together!",
+      images: ["https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=600&fit=crop&crop=face"],
+      distance: 3.5,
+      interests: ["Health", "Nutrition", "Pi Network", "Cooking", "Fitness"],
+      verified: true,
+      piVerified: true,
+      online: true,
+      lastSeen: "Active now"
+    },
+    {
+      id: 8,
+      name: "Zoe",
+      age: 22,
+      bio: "Psychology student exploring the mind & Pi Network 🧠 Love deep conversations, books, and building digital future",
+      images: ["https://images.unsplash.com/photo-1534751516642-a1af1ef26a56?w=400&h=600&fit=crop&crop=face"],
+      distance: 4.7,
+      interests: ["Psychology", "Books", "Pi Network", "Philosophy", "Music"],
+      verified: true,
+      piVerified: true,
+      online: false,
+      lastSeen: "30 min ago"
+    },
+    {
+      id: 9,
+      name: "Chloe",
+      age: 30,
+      bio: "Veterinarian with a heart for animals & Pi 🐱 Saving pets and investing in Pi. Looking for someone who loves both!",
+      images: ["https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=600&fit=crop&crop=face"],
+      distance: 6.1,
+      interests: ["Animals", "Veterinary", "Pi Network", "Nature", "Hiking"],
+      verified: true,
+      piVerified: true,
+      online: true,
+      lastSeen: "Active now"
+    },
+    {
+      id: 10,
+      name: "Violet",
+      age: 26,
+      bio: "Musician & crypto dreamer 🎵 Playing piano since 5, mining Pi since 2021. Music + Math = Perfect harmony!",
+      images: ["https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&h=600&fit=crop&crop=face"],
+      distance: 1.9,
+      interests: ["Music", "Piano", "Pi Network", "Crypto", "Art"],
+      verified: true,
+      piVerified: true,
+      online: true,
+      lastSeen: "Active now"
+    }
+  ];
+
   // Mock chat messages
   const mockChatMessages = [
     { id: 1, sender: 'them', message: "Hey! Thanks for the super like! 💜", timestamp: "2 min ago" },
@@ -675,5 +758,116 @@ const PiMatchApp = () => {
             <div className="bg-white rounded-xl p-4 border border-purple-100 shadow-sm">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl flex items-center justify-center">
-                    <Star className="w-6 h-6 text-white" />
+                  <div className="flex items-center space-x-3">
+                    <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-xl flex items-center justify-center">
+                      <Star className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-gray-800">Profile Boost</h3>
+                      <p className="text-sm text-gray-600">Be seen by more people</p>
+                    </div>
+                  </div>
+                  <button 
+                    onClick={() => makePiPayment(10, 'Profile Boost')}
+                    className="bg-gradient-to-r from-purple-500 to-blue-500 text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg transition-all"
+                  >
+                    10π
+                  </button>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-xl p-4 border border-purple-100 shadow-sm">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-teal-500 rounded-xl flex items-center justify-center">
+                      <Eye className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-semibold text-gray-800">Who Viewed Me</h3>
+                      <p className="text-sm text-gray-600">See your secret admirers</p>
+                    </div>
+                  </div>
+                  <button 
+                    onClick={() => makePiPayment(15, 'Who Viewed Me')}
+                    className="bg-gradient-to-r from-green-500 to-teal-500 text-white px-4 py-2 rounded-lg font-medium hover:shadow-lg transition-all"
+                  >
+                    15π
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+
+  // Matches Screen
+  const MatchesScreen = () => (
+    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50">
+      <div className="bg-white/80 backdrop-blur-lg border-b border-purple-100 p-4">
+        <div className="flex items-center justify-between max-w-sm mx-auto">
+          <button 
+            onClick={() => setCurrentScreen('main')}
+            className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center hover:bg-purple-200 transition-colors"
+          >
+            <ArrowLeft className="w-5 h-5 text-purple-600" />
+          </button>
+          <h1 className="text-xl font-bold text-gray-800">Matches</h1>
+          <div className="w-10"></div>
+        </div>
+      </div>
+
+      <div className="p-4">
+        <div className="max-w-sm mx-auto">
+          {matches.length === 0 ? (
+            <div className="text-center py-12">
+              <Heart className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+              <h3 className="text-lg font-semibold text-gray-600 mb-2">No matches yet</h3>
+              <p className="text-gray-500">Start swiping to find your Pi soulmate!</p>
+            </div>
+          ) : (
+            <div className="space-y-3">
+              {matches.map((match: any) => (
+                <div key={match.id} className="bg-white rounded-xl p-4 border border-purple-100 shadow-sm">
+                  <div className="flex items-center space-x-3">
+                    <img 
+                      src={match.images[0]} 
+                      alt={match.name}
+                      className="w-14 h-14 rounded-full object-cover border-2 border-pink-200"
+                    />
+                    <div className="flex-1">
+                      <div className="flex items-center space-x-2">
+                        <h3 className="font-semibold text-gray-800">{match.name}</h3>
+                        {match.piVerified && (
+                          <Crown className="w-4 h-4 text-yellow-500" />
+                        )}
+                      </div>
+                      <p className="text-sm text-gray-600">You matched!</p>
+                    </div>
+                    <button 
+                      onClick={() => openChat(match)}
+                      className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-lg transition-all"
+                    >
+                      Chat
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+
+  // Main render
+  if (currentScreen === 'login') return <LoginScreen />;
+  if (currentScreen === 'match') return <MatchScreen />;
+  if (currentScreen === 'premium') return <PremiumScreen />;
+  if (currentScreen === 'matches') return <MatchesScreen />;
+  if (currentScreen === 'chat') return <ChatScreen />;
+  
+  return <MainScreen />;
+};
+
+export default PiMatchApp;
